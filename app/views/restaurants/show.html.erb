@@ -9,6 +9,24 @@
 </p>
 
 <% if owner_view(current_owner, @restaurant) %>
+    <% if @restaurant.reservations.any? %>
+        <h3>Reservations</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Reservation Date and Time</th>
+            </tr>
+            <% @restaurant.reservations.each do |reservation| %>
+                <tr>
+                    <td><%= reservation.name %></td>
+                    <td><%= reservation.reservation_at.strftime('%b %d, %I:%M %p') %></td>
+                </tr>
+            <% end %>
+        </table>
+    <% end %>
+
     <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<% else %>
+    <%= render 'reservations/form' %>
 <% end %>
 <%= link_to 'Back', restaurants_path %>
