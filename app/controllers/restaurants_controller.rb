@@ -23,6 +23,8 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
 
+    @restaurant.owner = current_owner
+
     if @restaurant.save
       redirect_to @restaurant, notice: 'Restaurant was successfully created.'
     else
