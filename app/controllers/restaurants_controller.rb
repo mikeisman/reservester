@@ -1,6 +1,8 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_owner!, except: [:index, :show]
+
   # GET /restaurants
   def index
     @restaurants = Restaurant.all
@@ -46,6 +48,9 @@ class RestaurantsController < ApplicationController
   def destroy
     @restaurant.destroy
     redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.'
+  end
+
+  def dashboard
   end
 
   private

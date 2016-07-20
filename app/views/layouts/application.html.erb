@@ -10,6 +10,7 @@
 
     <div class="nav">
         <% if owner_signed_in? %>
+            <%= link_to "Dashboard", dashboard_path %> |
             <%= link_to "Log out #{current_owner.name}", destroy_owner_session_path, :method => :delete %>
         <% else %>
             <%= link_to "Log in", new_owner_session_path %>

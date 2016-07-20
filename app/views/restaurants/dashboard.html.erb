@@ -1,0 +1,7 @@
+<h1>Your restaurants</h1>
+
+<ul>
+    <% current_owner.restaurants.each do |restaurant| %>
+        <li><%= link_to restaurant.name, restaurant %></li>
+    <% end %>
+</ul>
