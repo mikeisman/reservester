@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.restaurant_id = @restaurant.id
     if @reservation.save
+      RestaurantMailer.reservation_created(@reservation).deliver
       redirect_to @restaurant, notice: 'Reservation was successfully created.'
     else
       render 'restaurants/show'
