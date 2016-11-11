@@ -7,4 +7,12 @@ class User < ActiveRecord::Base
   has_many :restaurants
 
   validates :name, presence: true
+
+  def owner?
+    return self.role == 'owner'
+  end
+
+  def patron?
+    return self.role == 'patron'
+  end
 end

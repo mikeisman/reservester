@@ -26,6 +26,6 @@
 
 <br>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user.owner? %>
     <%= link_to 'New Restaurant', new_restaurant_path %>
 <% end %>
