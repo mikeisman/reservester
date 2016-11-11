@@ -2,8 +2,10 @@
 
 one:
   name: MyString
-  address: MyString
+  address: 1 Main St
+  user_id: 1
 
 two:
-  name: MyString
-  address: MyString
+  name: Restaurant 2
+  address: 2 Main St
+  user_id: 1

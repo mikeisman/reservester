@@ -14,7 +14,7 @@
       <tr>
         <td><%= link_to restaurant.name, restaurant %></td>
         <td><%= restaurant.address %></td>
-        <% if owner_view(current_owner, restaurant) %>
+        <% if owner_view(current_user, restaurant) %>
             <td><%= link_to 'Show', restaurant %></td>
             <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
             <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,6 +26,6 @@
 
 <br>
 
-<% if owner_signed_in? %>
+<% if user_signed_in? %>
     <%= link_to 'New Restaurant', new_restaurant_path %>
 <% end %>

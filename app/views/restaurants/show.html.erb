@@ -8,7 +8,7 @@
   <%= @restaurant.address %>
 </p>
 
-<% if owner_view(current_owner, @restaurant) %>
+<% if owner_view(current_user, @restaurant) %>
     <% if @restaurant.reservations.any? %>
         <h3>Reservations</h3>
         <table>

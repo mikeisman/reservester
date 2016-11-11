@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
-  before_action :authenticate_owner!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /restaurants
   def index
@@ -26,7 +26,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
 
-    @restaurant.owner = current_owner
+    @restaurant.user = current_user
 
     if @restaurant.save
       redirect_to @restaurant, notice: 'Restaurant was successfully created.'
