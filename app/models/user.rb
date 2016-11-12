@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :restaurants
+  has_many :stars
 
   validates :name, presence: true
 
