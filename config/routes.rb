@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :restaurants do
     resources :reservations
+    put :star, on: :member
   end
 
   root 'restaurants#index'
