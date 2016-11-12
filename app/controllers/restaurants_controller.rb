@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy, :star]
 
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -51,6 +51,16 @@ class RestaurantsController < ApplicationController
   end
 
   def dashboard
+  end
+
+  def star
+    if current_user.starred_restaurants.include?(@restaurant)
+      current_user.starred_restaurants.delete(@restaurant)
+      redirect_to :back, notice: "Unstarred #{@restaurant.name}"
+    else
+      current_user.starred_restaurants << @restaurant
+      redirect_to :back, notice: "You starred #{@restaurant.name}"
+    end
   end
 
   private
