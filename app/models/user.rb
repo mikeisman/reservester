@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :restaurants
   has_many :stars
+  has_many :starred_restaurants, through: :stars, source: :restaurant
 
   validates :name, presence: true
 
