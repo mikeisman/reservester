@@ -48,4 +48,19 @@ class RestaurantsControllerTest < ActionController::TestCase
 
     assert_redirected_to restaurants_path
   end
+
+  test "should star restaurant if user has not already" do
+    request.env["HTTP_REFERER"] = restaurant_path(@restaurant)
+    assert_difference('Star.count') do
+      put :star, id: @restaurant
+    end
+  end
+
+  test "should unstar restaurant if user already starred" do
+    request.env["HTTP_REFERER"] = restaurant_path(@restaurant)
+    @user.starred_restaurants << @restaurant
+    assert_difference('Star.count', -1) do
+      put :star, id: @restaurant
+    end
+  end
 end
