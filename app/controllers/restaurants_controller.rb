@@ -56,10 +56,14 @@ class RestaurantsController < ApplicationController
   def star
     if current_user.starred_restaurants.include?(@restaurant)
       current_user.starred_restaurants.delete(@restaurant)
-      redirect_to :back, notice: "Unstarred #{@restaurant.name}"
+      @message = "Unstarred #{@restaurant.name}"
     else
       current_user.starred_restaurants << @restaurant
-      redirect_to :back, notice: "You starred #{@restaurant.name}"
+      @message = "You starred #{@restaurant.name}"
+    end
+    respond_to do |format|
+      format.html { redirect_to :back, notice: @message }
+      format.js {}
     end
   end
 

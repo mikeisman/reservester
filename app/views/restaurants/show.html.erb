@@ -27,21 +27,9 @@
 
     <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <% else %>
-
-  <% if current_user %>
-    <%
-      if current_user.starred_restaurants.include?(@restaurant)
-        star_image_path = 'unstar.png'
-      else
-        star_image_path = 'star.png'
-      end
-    %>
-
-    <%= link_to (image_tag star_image_path, style: 'height: 30px;'), star_restaurant_path(@restaurant), method: :put %>
-  <% end %>
-
-  <span><%= pluralize(@restaurant.stars.count, 'Star') %></span>
-
-    <%= render 'reservations/form' %>
+  <div id="star_content">
+    <%= render partial: 'star' %>
+  </div>
+  <%= render 'reservations/form' %>
 <% end %>
 <%= link_to 'Back', restaurants_path %>

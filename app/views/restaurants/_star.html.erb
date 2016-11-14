@@ -1,0 +1,13 @@
+<% if current_user %>
+  <%
+    if current_user.starred_restaurants.include?(@restaurant)
+      star_image_path = 'unstar.png'
+    else
+      star_image_path = 'star.png'
+    end
+  %>
+
+  <%= link_to (image_tag star_image_path, style: 'height: 30px;'), star_restaurant_path(@restaurant), method: :put, remote: true %>
+<% end %>
+
+<span id="star_count"><%= pluralize(@restaurant.stars.count, 'Star') %></span>
