@@ -40,6 +40,8 @@
     <%= link_to (image_tag star_image_path, style: 'height: 30px;'), star_restaurant_path(@restaurant), method: :put %>
   <% end %>
 
+  <span><%= pluralize(@restaurant.stars.count, 'Star') %></span>
+
     <%= render 'reservations/form' %>
 <% end %>
 <%= link_to 'Back', restaurants_path %>
