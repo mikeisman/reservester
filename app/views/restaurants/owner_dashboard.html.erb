@@ -2,6 +2,6 @@
 
 <ul>
     <% current_user.restaurants.each do |restaurant| %>
-        <li><%= link_to restaurant.name, restaurant %></li>
+        <li><%= link_to restaurant.name, restaurant %> - <%= pluralize(restaurant.starred_by.count, 'star') %></li>
     <% end %>
 </ul>
