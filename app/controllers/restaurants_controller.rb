@@ -50,7 +50,10 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.'
   end
 
-  def dashboard
+  def owner_dashboard
+  end
+
+  def patron_dashboard
   end
 
   def star
